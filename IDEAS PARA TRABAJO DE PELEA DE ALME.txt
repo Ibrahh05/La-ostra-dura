@@ -27,3 +27,88 @@ Cosas chulas:
 -aviso legal de mayoría de edad para jugar con frase divertida
 -nombres y palabras que referencien a almejas y cosas del mar
 -
+Queremos hacer un boton para ver el directo y que además los minijuegos sean funcionales
+
+//Estructura del proyecto
+
+la-ostra-dura/
+├── public/
+│   ├── favicon.ico
+│   ├── manifest.json
+│   └── robots.txt
+├── src/
+│   ├── assets/
+│   │   ├── fonts/
+│   │   │   ├── Neptune-Bold.woff2
+│   │   │   └── Neptune-Regular.woff2
+│   │   ├── images/
+│   │   │   ├── logo-neon.png
+│   │   │   ├── logo-neon-animado.gif
+│   │   │   ├── almeja-dorada.png
+│   │   │   ├── almeja-roja.png
+│   │   │   ├── almeja-azul.png
+│   │   │   └── fondo-submarino.jpg
+│   │   ├── videos/
+│   │   │   ├── intro-animacion.mp4
+│   │   │   ├── almejas-luchando.mp4
+│   │   │   ├── comentaristas.mp4
+│   │   │   └── ambiente-submarino.mp4
+│   │   └── sounds/
+│   │       ├── click.mp3
+│   │       ├── win.mp3
+│   │       ├── lose.mp3
+│   │       └── ambiente.mp3
+│   ├── components/
+│   │   ├── AgeVerification.tsx
+│   │   ├── NeonLogo.tsx
+│   │   ├── IntroAnimation.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── GamesCarousel.tsx
+│   │   ├── LiveStreamButton.tsx
+│   │   ├── ClamFightArena.tsx
+│   │   ├── BettingModal.tsx
+│   │   ├── ClamSelector.tsx
+│   │   ├── ClamCard.tsx
+│   │   ├── ResultAnimation.tsx
+│   │   ├── NotificationPopup.tsx
+│   │   ├── ChatBubble.tsx
+│   │   ├── OceanBackground.tsx
+│   │   ├── StatsDashboard.tsx
+│   │   └── Footer.tsx
+│   ├── games/
+│   │   ├── ClamRoulette.tsx
+│   │   ├── PearlPoker.tsx
+│   │   ├── ShellSlots.tsx
+│   │   ├── CrabRaces.tsx
+│   │   ├── OctopusBlackjack.tsx
+│   │   └── SeaweedBingo.tsx
+│   ├── hooks/
+│   │   ├── useSound.ts
+│   │   ├── useTypingEffect.ts
+│   │   ├── useNeonEffect.ts
+│   │   └── useLocalStorage.ts
+│   ├── stores/
+│   │   ├── useUserStore.ts
+│   │   ├── useGameStore.ts
+│   │   └── useBalanceStore.ts
+│   ├── utils/
+│   │   ├── constants.ts
+│   │   ├── clamNames.ts
+│   │   ├── gameRules.ts
+│   │   ├── animations.ts
+│   │   └── validators.ts
+│   ├── styles/
+│   │   ├── globals.css
+│   │   ├── neon-effects.css
+│   │   ├── animations.css
+│   │   └── carousel.css
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── tailwind.config.js
+├── postcss.config.js
+└── README.md
