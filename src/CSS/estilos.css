@@ -1,0 +1,1763 @@
+/* ============================================ */
+/* VARIABLES DE COLOR (Según tu plan) */
+/* ============================================ */
+:root {
+--color-gold: #E4C525;  /* Dorado */
+--color-red: #C70735;   /* Rojo */
+--color-blue-dark: #1545FD; /* Azul Marino */
+--color-turquoise: #B6FFFF; /* Azul Turquesa */
+--color-black: #282828;   /* Negro */
+--color-page-bg: #0B0F19; /* Fondo de la página */
+}
+
+/* ============================================ */
+/* BASE & RESET */
+/* ============================================ */
+* { 
+margin: 0; 
+padding: 0; 
+box-sizing: border-box; 
+}
+
+body {
+font-family: 'Arial Black', 'Arial Bold', sans-serif;
+background: var(--color-page-bg);
+color: #fff;
+overflow-x: hidden;
+position: relative; /* Necesario para el fondo fijo */
+}
+
+/* ============================================ */
+/* VERIFICACIÓN DE EDAD MEJORADA */
+/* ============================================ */
+.age-verification {
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+background: rgba(0, 0, 0, 0.98);
+backdrop-filter: blur(15px);
+z-index: 10000;
+display: flex;
+align-items: center;
+justify-content: center;
+animation: fadeIn 0.5s ease;
+}
+
+.age-verification.hidden {
+display: none;
+}
+
+.age-card {
+background: linear-gradient(135deg, var(--color-blue-dark), var(--color-red));
+padding: 3rem;
+border-radius: 20px;
+text-align: center;
+border: 3px solid var(--color-gold);
+box-shadow: 0 0 50px rgba(228, 197, 37, 0.7), 0 0 100px rgba(199, 7, 53, 0.5);
+max-width: 90px;
+width: 90%; /* Mejor responsive */
+animation: cardPulse 2s infinite;
+}
+
+@keyframes cardPulse {
+0%, 100% { transform: scale(1); box-shadow: 0 0 50px rgba(228, 197, 37, 0.7); }
+50% { transform: scale(1.02); box-shadow: 0 0 80px rgba(228, 197, 37, 1), 0 0 120px rgba(199, 7, 53, 0.8); }
+}
+
+.age-card h1 {
+font-size: 3.5rem;
+margin-bottom: 1rem;
+color: var(--color-gold);
+text-shadow: 0 0 15px var(--color-gold), 0 0 30px rgba(228, 197, 37, 0.5);
+animation: titleShake 0.5s infinite;
+}
+
+.age-title-content {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 15px;
+}
+.age-title-content>img {
+height: 120px;
+width: 120px;
+}
+
+.title-clam-gif {
+width: 600px;
+height: 600px;
+filter: drop-shadow(0 0 10px var(--color-gold));
+}
+
+
+@keyframes titleShake {
+0%, 100% { transform: rotate(0deg); }
+25% { transform: rotate(-2deg); }
+75% { transform: rotate(2deg); }
+}
+
+.age-card p {
+font-size: 1.2rem;
+margin-bottom: 2rem;
+line-height: 1.8;
+text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.age-card .warning {
+background: rgba(199, 7, 53, 0.3);
+border: 2px solid var(--color-red);
+padding: 1rem;
+border-radius: 10px;
+margin-bottom: 2rem;
+font-size: 0.95rem;
+animation: warningBlink 1.5s infinite;
+color: var(--color-turquoise);
+}
+
+.warning-icon {
+font-size: 1.2rem;
+color: var(--color-gold);
+}
+
+@keyframes warningBlink {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.7; }
+}
+
+.age-buttons {
+display: flex;
+gap: 1.5rem;
+flex-direction: column;
+}
+
+.age-btn {
+background: linear-gradient(135deg, var(--color-gold), #FFD700);
+color: var(--color-black);
+border: none;
+padding: 1.2rem 2rem;
+font-size: 1.2rem;
+font-weight: 900;
+border-radius: 15px;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 5px 20px rgba(228, 197, 37, 0.5);
+position: relative;
+overflow: hidden;
+}
+
+.age-btn:hover {
+transform: scale(1.05) rotate(-2deg);
+box-shadow: 0 10px 40px rgba(228, 197, 37, 1);
+}
+
+.age-btn.danger {
+background: linear-gradient(135deg, var(--color-red), #8B0000);
+color: #fff;
+animation: none; /* Quitamos el shake constante para enfocarnos en el hover */
+}
+
+.age-btn.danger:hover {
+transform: scale(1.05);
+animation: dangerShake 0.3s infinite, rejectPulse 0.5s infinite;
+}
+
+@keyframes dangerShake {
+0%, 100% { transform: translateX(0); }
+25% { transform: translateX(-5px); }
+75% { transform: translateX(5px); }
+}
+
+@keyframes rejectPulse {
+0%, 100% { box-shadow: 0 0 20px rgba(199, 7, 53, 0.8); }
+50% { box-shadow: 0 0 40px rgba(199, 7, 53, 1), 0 0 60px rgba(255, 0, 0, 0.8); }
+}
+
+
+/* ============================================ */
+/* EFECTOS EPILÉPTICOS SUTILES (Glitch & Flash) */
+/* ============================================ */
+.glitch {
+animation: glitchEffect 3s infinite;
+}
+
+@keyframes glitchEffect {
+0%, 90%, 100% { transform: translate(0); }
+91% { transform: translate(-2px, 2px); }
+92% { transform: translate(2px, -2px); }
+93% { transform: translate(-2px, -2px); }
+94% { transform: translate(2px, 2px); }
+}
+
+.flash-border {
+border: 4px solid;
+animation: flashBorder 2s infinite;
+}
+
+@keyframes flashBorder {
+0%, 100% { border-color: var(--color-gold); }
+25% { border-color: var(--color-red); }
+50% { border-color: var(--color-blue-dark); }
+75% { border-color: var(--color-turquoise); }
+}
+
+/* ============================================ */
+/* FONDO SUBMARINO */
+/* ============================================ */
+.ocean-bg {
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+z-index: 0;
+opacity: 0.15;
+pointer-events: none;
+}
+
+.bubble {
+position: absolute;
+bottom: -100px;
+background: radial-gradient(circle, rgba(182, 255, 255, 0.4), transparent);
+border-radius: 50%;
+animation: floatUp 20s infinite ease-in-out;
+}
+
+@keyframes floatUp {
+0% { transform: translateY(0) translateX(0); opacity: 0; }
+10% { opacity: 1; }
+90% { opacity: 1; }
+100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+}
+
+/* ============================================ */
+/* HEADER */
+/* ============================================ */
+header {
+background: rgba(11, 15, 25, 0.95);
+backdrop-filter: blur(5px);
+border-bottom: 3px solid var(--color-gold);
+padding: 1rem 2rem;
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: 0 5px 30px rgba(228, 197, 37, 0.3);
+}
+
+.header-content {
+max-width: 1600px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 1rem; /* Reducimos el gap para móvil */
+}
+
+.neon-logo {
+display: flex;
+align-items: center;
+gap: 1rem; /* Reducimos el gap */
+}
+
+.neon-logo>img {
+height: 160px;
+width: 120px;
+}
+
+.neon-icon-gif {
+
+border-radius: 50%; /* Si quieres que se vea como el avatar circular */
+animation: iconFloat 3s infinite ease-in-out;
+filter: drop-shadow(0 0 10px var(--color-gold));
+}
+
+@keyframes iconFloat {
+0%, 100% { transform: translateY(0) rotate(0deg); }
+50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+.neon-text h1 {
+font-size: 2rem; /* Reducimos el tamaño */
+color: var(--color-gold);
+text-shadow: 0 0 8px var(--color-gold); /* Neón más sutil */
+letter-spacing: 2px;
+}
+
+.neon-text p {
+font-size: 0.9rem;
+color: var(--color-turquoise);
+text-shadow: 0 0 3px var(--color-turquoise);
+margin-top: 0.3rem;
+}
+
+.live-btn {
+background: var(--color-red);
+color: white;
+border: none;
+padding: 0.8rem 1.5rem;
+border-radius: 5px;
+font-weight: 900;
+cursor: pointer;
+box-shadow: 0 0 10px var(--color-red);
+transition: all 0.3s;
+}
+
+.live-icon {
+margin-right: 5px;
+color: white; /* Asegura el color rojo */
+font-size: 1rem;
+}
+
+.balance {
+background: linear-gradient(135deg, var(--color-gold), #FFD700);
+color: var(--color-black);
+padding: 0.8rem 1.5rem;
+border-radius: 50px;
+font-size: 1.3rem; /* Reducimos el tamaño */
+font-weight: 900;
+box-shadow: 0 5px 20px rgba(228, 197, 37, 0.6);
+animation: balanceGlow 2s infinite;
+}
+
+.money-icon {
+font-weight: 900;
+}
+
+@keyframes balanceGlow {
+0%, 100% { box-shadow: 0 5px 20px rgba(228, 197, 37, 0.6); }
+50% { box-shadow: 0 8px 30px rgba(228, 197, 37, 1); }
+}
+
+/* ============================================ */
+/* CONTAINER */
+/* ============================================ */
+.container {
+max-width: 1600px;
+margin: 0 auto;
+padding: 2rem;
+position: relative;
+z-index: 1;
+}
+
+/* ============================================ */
+/* BANNER EVENTO PRINCIPAL */
+/* ============================================ */
+.main-event-banner {
+background: linear-gradient(135deg, rgba(21, 69, 253, 0.8), rgba(199, 7, 53, 0.8));
+border: 4px solid var(--color-gold);
+border-radius: 20px;
+padding: 2rem;
+margin-bottom: 2rem;
+text-align: center;
+box-shadow: 0 0 30px rgba(228, 197, 37, 0.5); /* Sutil */
+animation: bannerPulse 3s infinite;
+}
+
+@keyframes bannerPulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.01); } /* Pulso más suave */
+}
+
+.main-event-banner h2 {
+font-size: 2.5rem;
+color: var(--color-gold);
+text-shadow: 0 0 10px var(--color-gold);
+margin-bottom: 0.5rem;
+}
+
+.live-indicator {
+display: inline-block;
+background: var(--color-red);
+color: #fff;
+padding: 0.5rem 1.5rem;
+border-radius: 20px;
+font-size: 1.2rem;
+font-weight: 900;
+animation: liveBlink 1s infinite;
+margin-bottom: 1rem;
+box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+}
+
+.fight-icon {
+font-size: 1.2em;
+color: var(--color-gold);
+}
+
+/* ============================================ */
+/* ARENA DE COMBATE */
+/* ============================================ */
+.fight-arena {
+background: rgba(40, 40, 40, 0.95);
+border: 3px solid var(--color-red);
+border-radius: 20px;
+padding: 2rem;
+margin-bottom: 2rem;
+box-shadow: 0 10px 40px rgba(199, 7, 53, 0.5);
+}
+
+.arena-title {
+text-align: center;
+font-size: 2rem;
+color: var(--color-gold);
+text-shadow: 0 0 8px var(--color-gold);
+margin-bottom: 2rem;
+}
+
+.arena-icon {
+font-size: 1.2em;
+color: var(--color-turquoise);
+}
+
+.fighters-display {
+display: grid;
+grid-template-columns: 1fr auto 1fr;
+gap: 1.5rem;
+align-items: center;
+margin-bottom: 2rem;
+}
+
+.fighter {
+text-align: center;
+}
+
+.fighter-card {
+background: linear-gradient(135deg, rgba(21, 69, 253, 0.3), rgba(199, 7, 53, 0.3));
+border: 2px solid var(--color-gold);
+border-radius: 15px;
+padding: 1.5rem;
+transition: all 0.3s ease;
+}
+
+.fighter-avatar {
+width: 180px;
+height: 180px;
+object-fit: contain; /* Asegura que la imagen de la almeja se vea bien */
+background: rgba(0, 0, 0, 0.3); /* Fondo semitransparente para el círculo */
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 1rem;
+border: 4px solid var(--color-gold);
+box-shadow: 0 0 20px rgba(228, 197, 37, 0.7);
+animation: avatarFloat 3s infinite ease-in-out;
+transition: all 0.2s ease-in-out;
+}
+
+@keyframes avatarFloat {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-8px); }
+}
+
+.fighter-avatar.attacking {
+box-shadow: 0 0 40px var(--color-red);
+animation: attackShake 0.4s ease;
+}
+
+@keyframes attackShake {
+0%, 100% { transform: rotate(0deg) scale(1); }
+25% { transform: rotate(-10deg) scale(1.15); }
+50% { transform: rotate(10deg) scale(1.15); }
+75% { transform: rotate(-5deg) scale(1.1); }
+}
+
+.fighter-name {
+font-size: 1.6rem;
+color: var(--color-gold);
+margin-bottom: 0.5rem;
+text-shadow: 0 0 8px var(--color-gold);
+word-break: break-word; /* Evita desbordamiento de nombres largos */
+}
+
+.fighter-stats {
+font-size: 0.9rem;
+color: var(--color-turquoise);
+margin-bottom: 1rem;
+}
+
+.stat-icon {
+margin-right: 5px;
+color: var(--color-red);
+}
+
+.health-bar-container {
+width: 100%;
+background: var(--color-black);
+border-radius: 20px;
+overflow: hidden;
+border: 2px solid var(--color-gold);
+height: 35px; /* Reducimos la altura */
+}
+
+.health-bar {
+height: 100%;
+/* JS maneja el gradiente */
+transition: width 0.6s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 900;
+font-size: 1rem;
+color: var(--color-black);
+text-shadow: 0 0 3px #fff;
+}
+
+.vs-section {
+text-align: center;
+}
+
+.vs-text {
+font-size: 4rem; /* Reducimos el VS */
+color: var(--color-red);
+text-shadow: 0 0 15px var(--color-red);
+font-weight: 900;
+animation: vsRotate 4s infinite;
+}
+
+@keyframes vsRotate {
+0%, 100% { transform: rotate(0deg) scale(1); }
+50% { transform: rotate(360deg) scale(1.05); } /* Menos agresivo */
+}
+
+.round-counter {
+font-size: 1.4rem;
+color: var(--color-gold);
+margin-top: 1rem;
+}
+
+/* ============================================ */
+/* SISTEMA DE APUESTAS */
+/* ============================================ */
+.betting-section {
+background: rgba(11, 15, 25, 0.95);
+border: 3px solid var(--color-blue-dark);
+border-radius: 15px;
+padding: 2rem;
+margin-bottom: 2rem;
+}
+
+.betting-title {
+font-size: 1.8rem;
+color: var(--color-gold);
+text-align: center;
+margin-bottom: 1.5rem;
+text-shadow: 0 0 8px var(--color-gold);
+}
+
+.bet-icon {
+font-size: 1.2em;
+color: var(--color-gold);
+margin-right: 5px;
+}
+
+.betting-options {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Más flexible */
+gap: 1.5rem;
+margin-bottom: 2rem;
+}
+
+.bet-option {
+background: linear-gradient(135deg, rgba(21, 69, 253, 0.4), rgba(199, 7, 53, 0.4));
+border: 2px solid var(--color-gold);
+border-radius: 15px;
+padding: 1.5rem;
+text-align: center;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.bet-clam-icon {
+width: 60px;
+height: 60px;
+object-fit: contain;
+margin: 10px 0;
+}
+
+.bet-option:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 20px rgba(228, 197, 37, 0.6);
+border-color: var(--color-turquoise);
+}
+
+.bet-option.selected {
+border: 4px solid var(--color-gold);
+background: linear-gradient(135deg, rgba(228, 197, 37, 0.3), rgba(182, 255, 255, 0.3));
+box-shadow: 0 0 30px rgba(228, 197, 37, 0.8);
+animation: selectedPulse 1s infinite;
+}
+
+@keyframes selectedPulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.03); } /* Pulso más suave */
+}
+
+.bet-amount-input {
+width: 100%;
+background: rgba(40, 40, 40, 0.8);
+border: 2px solid var(--color-gold);
+color: #fff;
+padding: 1rem;
+font-size: 1.2rem;
+border-radius: 10px;
+text-align: center;
+font-weight: 900;
+margin: 1rem 0;
+}
+
+.bet-btn {
+width: 100%;
+background: linear-gradient(135deg, var(--color-gold), var(--color-red));
+color: var(--color-black);
+border: none;
+padding: 1.2rem;
+font-size: 1.4rem;
+font-weight: 900;
+border-radius: 50px;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 5px 20px rgba(228, 197, 37, 0.6);
+text-transform: uppercase;
+}
+
+.bet-btn:hover {
+transform: scale(1.03);
+box-shadow: 0 10px 30px rgba(228, 197, 37, 1);
+}
+
+.bet-btn:disabled {
+opacity: 0.4;
+cursor: not-allowed;
+animation: none;
+}
+
+/* ============================================ */
+/* COMENTARIOS EN VIVO MEJORADOS */
+/* ============================================ */
+.commentary-box {
+background: rgba(40, 40, 40, 0.95);
+border: 2px solid var(--color-turquoise);
+border-radius: 15px;
+padding: 1.5rem;
+margin-bottom: 2rem;
+max-height: 400px;
+overflow-y: auto;
+display: flex;
+flex-direction: column-reverse; /* Nuevo comentario abajo */
+}
+
+/* Custom Scrollbar */
+.commentary-box::-webkit-scrollbar {
+width: 8px;
+}
+.commentary-box::-webkit-scrollbar-thumb {
+background: var(--color-blue-dark);
+border-radius: 10px;
+}
+.commentary-box::-webkit-scrollbar-track {
+background: var(--color-black);
+}
+
+.commentary-title {
+font-size: 1.5rem;
+color: var(--color-turquoise);
+margin-bottom: 1rem;
+text-shadow: 0 0 8px var(--color-turquoise);
+display: flex;
+align-items: center;
+gap: 0.5rem;
+position: sticky;
+top: -1.5rem; /* Ajuste para que se mantenga visible */
+background: var(--color-black);
+padding-bottom: 10px;
+z-index: 10;
+}
+
+.comment-icon {
+font-size: 1.2em;
+color: var(--color-turquoise);
+}
+
+.comment {
+background: rgba(21, 69, 253, 0.2);
+border-left: 3px solid var(--color-gold);
+padding: 0.8rem;
+margin-bottom: 0.8rem;
+border-radius: 8px;
+animation: slideIn 0.5s ease;
+transition: all 0.3s ease;
+word-break: break-word; /* Solución al desbordamiento */
+}
+
+.comment:hover {
+background: rgba(21, 69, 253, 0.4);
+transform: translateX(3px);
+}
+
+@keyframes slideIn {
+from { transform: translateX(-20px); opacity: 0; }
+to { transform: translateX(0); opacity: 1; }
+}
+
+.comment-time {
+color: var(--color-turquoise);
+font-size: 0.8rem;
+margin-right: 0.5rem;
+font-weight: 700;
+}
+
+.comment-text {
+color: #fff;
+font-size: 0.95rem;
+}
+
+/* Clase para mensajes instantáneos y resaltados */
+.comment.shout {
+background: rgba(199, 7, 53, 0.3);
+border-left: 5px solid var(--color-red);
+animation: criticalPulse 0.5s ease;
+font-size: 1.05rem;
+font-weight: 900;
+color: #fff;
+}
+
+@keyframes criticalPulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.02); }
+}
+
+/* Clase para el Ganador (Lo que pediste resaltar) */
+.comment.winner {
+background: linear-gradient(135deg, rgba(228, 197, 37, 0.5), rgba(182, 255, 255, 0.5));
+border: 3px solid var(--color-gold);
+border-left: 8px solid var(--color-gold);
+font-size: 1.3rem;
+font-weight: 900;
+padding: 1.2rem;
+animation: winnerAnnounce 1s ease;
+box-shadow: 0 0 30px rgba(228, 197, 37, 0.8);
+color: var(--color-black); /* Texto oscuro para contraste */
+}
+
+@keyframes winnerAnnounce {
+0% { transform: scale(0.8); opacity: 0; }
+50% { transform: scale(1.05); }
+100% { transform: scale(1); opacity: 1; }
+}
+
+/* ============================================ */
+/* MINIJUEGOS */
+/* ============================================ */
+.mini-games-title {
+text-align: center;
+font-size: 2.5rem;
+color: var(--color-gold);
+text-shadow: 0 0 15px var(--color-gold);
+margin-bottom: 2rem;
+}
+
+.slot-icon {
+font-size: 1.2em;
+color: var(--color-red);
+}
+
+.game-icon-img {
+width: 60px;
+height: 60px;
+object-fit: contain;
+margin-bottom: 10px;
+filter: drop-shadow(0 0 5px var(--color-turquoise));
+}
+
+/* ============================================ */
+/* MODAL DE RESULTADO */
+/* ============================================ */
+.result-modal {
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+background: rgba(0, 0, 0, 0.95);
+backdrop-filter: blur(10px);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 1000;
+opacity: 0;
+visibility: hidden;
+transition: all 0.3s ease;
+}
+
+.result-modal.show {
+opacity: 1;
+visibility: visible;
+}
+
+.result-content {
+background: linear-gradient(135deg, var(--color-blue-dark), var(--color-red));
+border: 5px solid var(--color-gold);
+border-radius: 20px;
+padding: 3rem;
+text-align: center;
+max-width: 600px;
+width: 90%;
+transform: scale(0.8);
+transition: transform 0.3s ease;
+}
+
+.result-modal.show .result-content {
+transform: scale(1);
+}
+
+.result-icon {
+margin-bottom: 1rem;
+height: 70px; /* Contenedor para la imagen del resultado */
+animation: iconBounce 0.5s ease infinite;
+}
+
+.result-icon-img {
+width: 70px;
+height: 70px;
+object-fit: contain;
+}
+
+@keyframes iconBounce {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-15px); }
+}
+
+.result-title {
+font-size: 2.5rem;
+color: var(--color-gold);
+text-shadow: 0 0 15px var(--color-gold);
+margin-bottom: 1rem;
+}
+
+.result-message {
+font-size: 1.3rem;
+color: var(--color-turquoise);
+margin-bottom: 2rem;
+line-height: 1.6;
+}
+
+/* ============================================ */
+/* RESPONSIVE FINAL */
+/* ============================================ */
+@media (max-width: 768px) {
+.fighters-display {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.vs-section {
+    order: -1;
+}
+
+.neon-text h1 {
+    font-size: 1.5rem;
+}
+
+.fighter-avatar {
+    width: 150px;
+    height: 150px;
+}
+
+.age-card {
+    padding: 1.5rem;
+    margin: 1rem;
+}
+
+.age-card h1 {
+    font-size: 2rem;
+}
+
+.title-clam-gif {
+width: 40px;
+height: 40px;
+}
+
+.neon-icon-gif {
+width: 50px;
+height: 50px;
+}
+
+.header-content {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.balance, .live-btn {
+    flex-basis: 45%;
+    text-align: center;
+}
+}
+
+
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+from { opacity: 1; }
+to { opacity: 0; }
+}
+
+/* ============================================ */
+/* VARIABLES DE COLOR (Alineadas al Mockup) */
+/* ============================================ */
+:root {
+    --color-gold: #E4C525;    /* Dorado */
+    --color-red: #C70735;     /* Rojo */
+    --color-blue-dark: #1545FD; /* Azul Marino */
+    --color-turquoise: #B6FFFF; /* Azul Turquesa */
+    --color-black: #282828;     /* Negro Oscuro */
+    --color-page-bg: #0B0F19; /* Fondo de la página */
+    --color-card-bg: #1A1A30; /* Fondo de cartas y módulos */
+    --color-text-light: #F0F0F0;
+}
+
+/* ============================================ */
+/* BASE & RESET */
+/* ============================================ */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--color-page-bg);
+    color: var(--color-text-light);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* ============================================ */
+/* FIX: VERIFICACIÓN DE EDAD (Más Compacta) */
+/* ============================================ */
+.age-verification {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.age-verification.hidden {
+    display: none;
+}
+
+.age-card {
+    background: var(--color-card-bg);
+    padding: 2.5rem; /* Reducido */
+    border-radius: 15px;
+    text-align: center;
+    border: 3px solid var(--color-gold);
+    box-shadow: 0 0 30px rgba(228, 197, 37, 0.5);
+    max-width: 450px; /* Más estrecho */
+    width: 90%;
+    animation: cardPulse 2s infinite alternate;
+}
+
+@keyframes cardPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+}
+
+.age-card h1 {
+    font-size: 2rem; /* Reducido */
+    margin-bottom: 0.8rem;
+    color: var(--color-red);
+    text-shadow: 0 0 10px var(--color-red);
+}
+
+.title-clam-gif {
+    width: 40px; 
+    height: 40px;
+    filter: drop-shadow(0 0 5px var(--color-gold));
+}
+
+.age-card p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.warning {
+    background: rgba(199, 7, 53, 0.2);
+    border: 1px solid var(--color-red);
+    color: var(--color-turquoise);
+    padding: 0.8rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.age-buttons {
+    gap: 1rem;
+}
+
+.age-btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+/* ============================================ */
+/* ICONOS Y DECORACIÓN (Imágenes y GIFs) */
+/* ============================================ */
+
+/* Header Logo */
+.neon-icon-gif {
+    width: 50px; 
+    height: 50px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px var(--color-gold));
+    animation: iconFloat 3s infinite alternate;
+}
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Contenedores de Luchadores (Cartas) */
+.fighter-card {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-blue-dark);
+    box-shadow: 0 0 15px rgba(21, 69, 253, 0.4);
+    border-radius: 10px;
+    padding: 0; /* Sin padding general */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.fighter-avatar {
+    width: 100%; /* Ocupa todo el ancho de la tarjeta */
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--color-gold);
+    animation: none; /* Quitamos el avatarFloat del CSS anterior */
+}
+
+/* Estadísticas debajo del Avatar */
+.fighter-info {
+    padding: 1rem;
+    text-align: left;
+}
+.fighter-name {
+    font-size: 1.2rem;
+    color: var(--color-gold);
+    margin: 0;
+    text-shadow: none;
+}
+.fighter-stats {
+    font-size: 0.85rem;
+    color: var(--color-turquoise);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+.fighter-title {
+    font-size: 0.8rem;
+    color: var(--color-red);
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+/* Botones de Apuesta (Ajuste al estilo del mockup) */
+.bet-btn {
+    background: linear-gradient(135deg, var(--color-gold), var(--color-red));
+    color: var(--color-black);
+    font-weight: 900;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(228, 197, 37, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.bet-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px var(--color-gold);
+}
+
+/* Sección de Minijuegos (Carrusel horizontal) */
+.games-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 0;
+    scroll-behavior: smooth;
+    margin-bottom: 2rem;
+}
+.game-card {
+    min-width: 150px;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-turquoise);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(182, 255, 255, 0.5);
+}
+
+.game-icon-img {
+    width: 60px; /* Más pequeños para el carrusel */
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px var(--color-turquoise));
+}
+
+/* Módulo General */
+.module-box {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-blue-dark);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Stats Dashboard (Mareas de la Fortuna) */
+.stats-dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.stat-box {
+    background: var(--color-page-bg);
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid var(--color-gold);
+}
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--color-gold);
+    text-shadow: 0 0 5px var(--color-gold);
+}
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--color-turquoise);
+    margin-top: 5px;
+}
+
+/* Footer (Simulando el Mockup) */
+footer {
+    background: var(--color-page-bg);
+    border-top: 1px solid var(--color-blue-dark);
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #999;
+}
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+.footer-link {
+    color: var(--color-turquoise);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-link:hover {
+    color: var(--color-gold);
+}
+
+/* ============================================ */
+/* Responsive & Animaciones (Manteniendo lo anterior) */
+/* ============================================ */
+
+/* ... (Mantener tus media queries y keyframes para glitch, fade, etc.) ... */
+
+/* FIX: Asegurar que el contenido del carrusel no se rompa */
+.games-carousel {
+    flex-wrap: nowrap;
+}
+
+/* ============================================ */
+/* VARIABLES DE COLOR */
+/* ============================================ */
+:root {
+    --color-gold: #E4C525;    /* Dorado */
+    --color-red: #C70735;     /* Rojo Sangre */
+    --color-blue-dark: #1545FD; /* Azul Marino Profundo */
+    --color-turquoise: #B6FFFF; /* Azul Turquesa Neón */
+    --color-black: #0B0F19;     /* Fondo Abismo */
+    --color-card-bg: #1A1A30; /* Fondo de cartas */
+}
+
+/* ============================================ */
+/* BASE & RESET */
+/* ============================================ */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Arial Black', 'Arial Bold', sans-serif;
+}
+
+body {
+    background: var(--color-black);
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* ============================================ */
+/* VERIFICACIÓN DE EDAD */
+/* ============================================ */
+.age-verification {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(15px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s ease;
+}
+.age-card{
+    transform: scale(0.7);
+}
+.age-card>*{
+    transform: scale(0.9);
+}
+.age-verification.hidden {
+    display: none;
+}
+
+.age-card {
+    background: linear-gradient(135deg, var(--color-blue-dark), var(--color-red));
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    border: 4px solid var(--color-gold);
+    box-shadow: 0 0 50px rgba(228, 197, 37, 0.5);
+    max-width: 500px;
+    width: 90%;
+    animation: cardPulse 3s infinite alternate;
+}
+
+.age-title-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 1rem;
+}
+
+.title-clam-gif {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px var(--color-gold));
+}
+
+.age-card h1 {
+    font-size: 2.2rem;
+    color: var(--color-gold);
+    text-shadow: 0 0 10px var(--color-gold);
+    text-transform: uppercase;
+}
+
+.warning {
+    background: rgba(199, 7, 53, 0.3);
+    border: 2px solid var(--color-red);
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    color: var(--color-turquoise);
+    animation: warningBlink 2s infinite;
+}
+
+.warning-icon {
+    font-size: 1.2rem;
+}
+
+.age-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--color-gold), #FFD700);
+    color: #000;
+    border: none;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 900;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.age-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px var(--color-gold);
+}
+
+.age-btn.danger {
+    background: linear-gradient(135deg, var(--color-red), #800000);
+    color: #fff;
+}
+
+.age-btn.danger:hover {
+    box-shadow: 0 0 20px var(--color-red);
+}
+
+/* ============================================ */
+/* HEADER & LOGO */
+/* ============================================ */
+header {
+    background: rgba(11, 15, 25, 0.95);
+    border-bottom: 3px solid var(--color-gold);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.neon-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.neon-icon-gif {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px var(--color-gold));
+    animation: iconFloat 3s infinite ease-in-out;
+}
+
+.neon-text h1 {
+    font-size: 1.8rem;
+    color: var(--color-gold);
+    text-shadow: 0 0 10px var(--color-gold);
+    line-height: 1;
+}
+
+.neon-text p {
+    font-size: 0.8rem;
+    color: var(--color-turquoise);
+    letter-spacing: 1px;
+}
+
+.live-btn {
+    background: var(--color-red);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--color-red);
+    animation: pulseRed 2s infinite;
+}
+
+.live-dot {
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.balance {
+    background: linear-gradient(135deg, var(--color-gold), #B8860B);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 900;
+    color: #000;
+    box-shadow: 0 0 15px var(--color-gold);
+}
+
+/* ============================================ */
+/* ARENA DE COMBATE */
+/* ============================================ */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.main-event-banner {
+    text-align: center;
+    border: 3px solid var(--color-turquoise);
+    padding: 2rem;
+    border-radius: 15px;
+    background: rgba(21, 69, 253, 0.2);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-event-banner h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 15px var(--color-blue-dark);
+}
+
+.fighters-display {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.fighter-card {
+    background: var(--color-card-bg);
+    border: 2px solid var(--color-gold);
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.fighter-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 40px rgba(228, 197, 37, 0.3);
+}
+
+/* IMAGEN DEL LUCHADOR (CIRCULAR Y GLOW) */
+.fighter-avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--color-gold);
+    margin: 0 auto 1rem;
+    box-shadow: 0 0 20px var(--color-gold);
+    background: #000;
+    transition: all 0.3s ease;
+}
+
+/* Animación de ataque */
+.fighter-avatar.attacking {
+    transform: scale(1.2);
+    border-color: var(--color-red);
+    box-shadow: 0 0 50px var(--color-red);
+}
+
+/* Animación de daño recibido */
+.fighter-avatar.hit {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+    filter: sepia(1) hue-rotate(-50deg) saturate(5); /* Se pone rojo */
+}
+
+.fighter-name {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin-bottom: 0.5rem;
+}
+
+.fighter-stats {
+    font-size: 0.9rem;
+    color: var(--color-turquoise);
+    margin-bottom: 1rem;
+    background: rgba(0,0,0,0.3);
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+/* BARRAS DE VIDA */
+.health-bar-container {
+    height: 25px;
+    background: #333;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #555;
+    position: relative;
+}
+
+.health-bar {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #00ff00, #adff2f);
+    transition: width 0.3s ease, background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #000;
+    font-weight: bold;
+}
+
+/* VS SECTION */
+.vs-section {
+    text-align: center;
+}
+
+.vs-text {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--color-red);
+    text-shadow: 0 0 20px var(--color-red);
+    font-family: 'Impact', sans-serif;
+    animation: pulseVS 1s infinite;
+}
+
+.round-counter {
+    font-size: 1.5rem;
+    color: var(--color-turquoise);
+    margin-top: 0.5rem;
+}
+
+/* ============================================ */
+/* APUESTAS */
+/* ============================================ */
+.betting-section {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--color-blue-dark);
+    padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+}
+
+.betting-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.bet-option {
+    background: rgba(255,255,255,0.05);
+    border: 2px solid transparent;
+    padding: 1rem;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s;
+}
+
+.bet-option:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.bet-option.selected {
+    border-color: var(--color-gold);
+    background: rgba(228, 197, 37, 0.1);
+    box-shadow: 0 0 20px rgba(228, 197, 37, 0.2);
+}
+
+.bet-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-turquoise);
+}
+
+.bet-amount-input {
+    width: 100%;
+    padding: 1rem;
+    background: #000;
+    border: 2px solid var(--color-gold);
+    color: var(--color-gold);
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.bet-btn {
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(45deg, var(--color-red), #ff4d4d);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 900;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 0 30px var(--color-red);
+    transition: all 0.3s;
+}
+
+.bet-btn:hover {
+    transform: scale(1.02);
+    filter: brightness(1.2);
+}
+
+.bet-btn:disabled {
+    filter: grayscale(1);
+    cursor: not-allowed;
+}
+
+/* ============================================ */
+/* COMENTARIOS */
+/* ============================================ */
+.commentary-box {
+    height: 250px;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.comment {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+}
+
+.comment.shout {
+    color: var(--color-red);
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px var(--color-red);
+}
+
+.comment.winner {
+    color: var(--color-gold);
+    font-size: 1.2rem;
+    text-align: center;
+    border: 2px solid var(--color-gold);
+    padding: 1rem;
+    background: rgba(228, 197, 37, 0.1);
+}
+
+/* ============================================ */
+/* MINIJUEGOS (CARRUSEL) */
+/* ============================================ */
+.mini-games {
+    margin-top: 3rem;
+}
+
+.games-carousel {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1rem 0.5rem;
+}
+
+.game-card {
+    min-width: 160px;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-turquoise);
+    padding: 1rem;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+    background: rgba(21, 69, 253, 0.3);
+}
+
+.game-icon-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 0 5px var(--color-turquoise));
+}
+
+.game-name {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-top: 0.5rem;
+}
+
+/* ============================================ */
+/* MODAL RESULTADO */
+/* ============================================ */
+.result-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.result-modal.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.result-content {
+    background: var(--color-card-bg);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 4px solid var(--color-gold);
+    text-align: center;
+    max-width: 500px;
+    transform: scale(0.8);
+    transition: transform 0.3s;
+}
+
+.result-modal.show .result-content {
+    transform: scale(1);
+}
+
+.result-icon-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 20px var(--color-gold));
+}
+
+.result-content.lose .result-icon-img {
+    filter: drop-shadow(0 0 20px var(--color-red));
+}
+
+/* Animaciones */
+@keyframes iconFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes cardPulse { 0% { box-shadow: 0 0 30px var(--color-red); } 100% { box-shadow: 0 0 60px var(--color-blue-dark); } }
+@keyframes pulseRed { 0% { box-shadow: 0 0 0 0 rgba(199, 7, 53, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(199, 7, 53, 0); } 100% { box-shadow: 0 0 0 0 rgba(199, 7, 53, 0); } }
+@keyframes warningBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
+@keyframes pulseVS { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .fighters-display { grid-template-columns: 1fr; }
+    .vs-section { margin: 1rem 0; }
+    .neon-text h1 { font-size: 1.5rem; }
+    .fighter-avatar { width: 140px; height: 140px; }
+}
