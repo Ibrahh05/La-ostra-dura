@@ -10,7 +10,8 @@ $criaturas_marinas = [
     "almeja1.png",
     "almeja2.jpeg",
     "almeja3.webp",
-    "pezFeoGanador.webp", // Ejemplo de criatura 4
+    "bobEsponjaMalvado.jpg",
+    "calamardoMalvado.webp",
     "pezMamador.jpg", // Ejemplo de criatura 5
     "pezTriste.jpg", // Ejemplo de criatura 6
     "pezDientudo.jpg" // Ejemplo de criatura 7
