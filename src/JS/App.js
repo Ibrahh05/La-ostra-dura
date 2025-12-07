@@ -152,14 +152,27 @@ function addComment(text, shout = false, className = '') {
 document.addEventListener('DOMContentLoaded', () => {
     createBubbles(); 
     updateBalance();
+
+    // Cargar las imágenes de las criaturas desde el atributo data-criaturas (llenado por PHP)
+    try {
+        const imgDataEl = document.getElementById('img-data-container');
+        if (imgDataEl && imgDataEl.dataset && imgDataEl.dataset.criaturas) {
+            const names = JSON.parse(imgDataEl.dataset.criaturas || '[]');
+            if (names && names.length) {
+                // Prefijar la ruta relativa correcta desde `src/web/` hacia `src/assets/images/`
+                fighterImages = names.map(n => '../assets/images/' + n);
+            }
+        }
+    } catch (e) {
+        console.warn('No se pudo cargar lista de imágenes locales, se usarán placeholders.', e);
+    }
+
     randomizeFighters();
-    
     document.getElementById('commentary').innerHTML = '';
-    
+
     if (localStorage.getItem('balance')) {
         addCommentTyping('🎙️ ¡El Pulpo Locutor te extrañó! Bienvenido de vuelta, adicto. 😈', 80);
     } else {
-        // Si es la primera vez (no hay balance guardado)
         addCommentTyping('🎙️ ¡Bienvenido, novato! Lee el aviso de edad, ¡es importante para tu salud mental! 😈', 80);
     }
 });
@@ -400,7 +413,9 @@ function fightLoop() {
 }
 
 function animateAttack(attacker, damage) {
-    const fighterElement = document.getElementById('fighter' + attacker);
+    // El contenedor en el HTML usa id="fighter-card-1" / "fighter-card-2"
+    const fighterElement = document.getElementById('fighter-card-' + attacker);
+    if (!fighterElement) return; // seguridad para evitar errores si cambia el DOM
     fighterElement.classList.add('attacking');
     
     // Crear y animar daño flotante
@@ -527,14 +542,9 @@ function closeResult() {
 // ============================================
 // RECURSOS GRÁFICOS Y DATOS (URLs de Imagenes)
 // ============================================
-const fighterImages = [
-    'https://i.imgur.com/g6u5R8Y.png', // Almeja Dorada
-    'https://i.imgur.com/uR5xW6G.png', // Almeja Roja
-    'https://placehold.co/200x200/1545FD/FFF?text=Pez+Feo', // Pez Feo Placeholder
-    'https://placehold.co/200x200/C70735/FFF?text=Cangrejo+Box', // Cangrejo
-    'https://placehold.co/200x200/333333/FFF?text=Ostra+Ninja', // Ostra Ninja
-    'https://placehold.co/200x200/E4C525/000?text=Bob+Esponja+Malvado' // Bob Malo
-];
+// Lista de imágenes para los luchadores. Se inicializa vacía y se pobl
+//ará desde el atributo `data-criaturas` en `index.php` al cargar el DOM.
+let fighterImages = [];
 
 const victoryImage = 'https://media.giphy.com/media/l41lUjUgLLwWrz20w/giphy.gif'; // Minion celebrando o similar
 const defeatImage = 'https://i.imgur.com/5c9Qh8X.gif'; // Chef cocinando (Derrota)

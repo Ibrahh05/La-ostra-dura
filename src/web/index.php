@@ -1,18 +1,19 @@
 <?php
 // Rutas de las imágenes de las criaturas (para la pelea)
-$base_img_url = "assets/images/";
-$logo_icon = $base_img_url . "logo_icon.gif"; // Icono/Logo para el header (lo sustituimos por un icon animado)
+$base_img_url = "../assets/images/";
+// Icono/Logo (archivo en `src/assets/icons/logo.png`)
+$logo_icon = "../assets/icons/logo.png";
 
 // LUCHADORES
 // Nombres de archivos de las criaturas graciosas
 $criaturas_marinas = [
-    "almeja1.png", 
-    "almeja2.webp", 
+    "almeja1.png",
+    "almeja2.jpeg",
     "almeja3.webp",
     "pezFeoGanador.webp", // Ejemplo de criatura 4
     "pezMamador.jpg", // Ejemplo de criatura 5
     "pezTriste.jpg", // Ejemplo de criatura 6
-    "pezDientudo.webp" // Ejemplo de criatura 7
+    "pezDientudo.jpg" // Ejemplo de criatura 7
 ];
 
 // RESULTADOS (Las imágenes de los platos cocinados y el ganador)
@@ -22,11 +23,11 @@ $img_derrota_2 = $base_img_url . "pezCocinado.webp"; // Imagen de pez cocinado
 $img_chef = $base_img_url . "chef_macabro.gif"; // Usaremos un GIF para el icono de derrota
 
 // OTROS JUEGOS (Se mantienen las rutas, asumiendo que existen)
-$gif_ruleta = $base_img_url . "ruleta.gif";
-$gif_tragaperlas = $base_img_url . "tragaperlas.gif";
-$img_blackjack = $base_img_url . "blackjack.png";
-$gif_cangrejo = $base_img_url . "cangrejo.gif";
-$img_poker = $base_img_url . "poker.png";
+$gif_ruleta = $img_ganador; // fallback: imagen existente
+$gif_tragaperlas = $img_ganador; // fallback: imagen existente
+$img_blackjack = $img_ganador; // fallback: imagen existente
+$gif_cangrejo = $base_img_url . "pezTriste.jpg"; // usar imagen existente
+$img_poker = $img_ganador; // fallback: imagen existente
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +39,7 @@ $img_poker = $base_img_url . "poker.png";
     <!-- Font Awesome para iconos (sustituyendo emojis) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Rutas de estilos y scripts según tu solicitud -->
-    <link rel="stylesheet" href="/CSS/estilos.css">
+    <link rel="stylesheet" href="../CSS/estilos.css">
     <link rel="icon" type="image/png" href="favicon.ico"> 
 </head>
 <body>
@@ -87,7 +88,7 @@ $img_poker = $base_img_url . "poker.png";
         <div class="header-content">
             <div class="neon-logo"> 
                 <!-- Icono de Font Awesome para logo -->
-                <img src="/assets/icons/logo.png">
+                <img src="../assets/icons/logo.png">
                 <div class="neon-text">
                     <h1 class="glitch-text" data-text="LA OSTRA DURA">LA OSTRA DURA</h1>
                     <p class="slogan">APUESTA Y REZA (QUE GANE TU ALMEJA)</p>
@@ -113,7 +114,7 @@ $img_poker = $base_img_url . "poker.png";
                 <!-- LUCHADOR 1 -->
                 <div class="fighter" id="fighter-card-1">
                     <div class="fighter-card">
-                        <img src="" alt="Criatura 1" class="fighter-avatar" id="fighter-img-1">
+                        <img src="../assets/images/pezMamador.jpg" alt="Criatura 1" class="fighter-avatar" id="fighter-img-1">
                         <div class="fighter-info">
                             <div class="fighter-name" id="name1"></div>
                             <div class="fighter-title">"El Conquistador del Fondo"</div>
@@ -147,11 +148,11 @@ $img_poker = $base_img_url . "poker.png";
                 <h4 class="betting-title"><i class="fas fa-gavel bet-icon"></i> Apuesta por tu molusco favorito</h4>
                 <div class="betting-options">
                     <div class="bet-option" id="betOption1" onclick="selectFighter(1)">
-                        <img src="" alt="Apuesta 1" class="bet-clam-icon" id="bet-img-1">
+                        <img src="" alt="Apuesta 1" class="bet-clam-icon" id="bet-thumb-1">
                         <div id="betName1"></div>
                     </div>
                     <div class="bet-option" id="betOption2" onclick="selectFighter(2)">
-                        <img src="" alt="Apuesta 2" class="bet-clam-icon" id="bet-img-2">
+                        <img src="" alt="Apuesta 2" class="bet-clam-icon" id="bet-thumb-2">
                         <div id="betName2"></div>
                     </div>
                 </div>
@@ -217,7 +218,7 @@ $img_poker = $base_img_url . "poker.png";
         <div class="result-content">
             <!-- Icono de Resultado (Será una imagen dinámica en JS) -->
             <div class="result-icon">
-                <img src="" alt="Imagen de resultado" class="result-icon-img" id="result-img">
+                <img src="" alt="Imagen de resultado" class="result-icon-img" id="resultImage">
             </div>
             <h2 class="result-title" id="resultTitle"></h2>
             <p class="result-message" id="resultMessage"></p>
@@ -239,6 +240,6 @@ $img_poker = $base_img_url . "poker.png";
         </div>
     </footer>
 
-    <script src="/JS/App.js"></script> 
+    <script src="../JS/App.js"></script>
 </body>
 </html>
