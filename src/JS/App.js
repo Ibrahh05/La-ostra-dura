@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const names = JSON.parse(imgDataEl.dataset.criaturas || '[]');
             if (names && names.length) {
                 // Prefijar la ruta relativa correcta desde `src/web/` hacia `src/assets/images/`
-                fighterImages = names.map(n => '../assets/images/' + n);
+                fighterImages = names.map(n => '/assets/images/' + n);
             }
         }
     } catch (e) {
@@ -546,8 +546,9 @@ function closeResult() {
 //ará desde el atributo `data-criaturas` en `index.php` al cargar el DOM.
 let fighterImages = [];
 
-const victoryImage = 'https://media.giphy.com/media/l41lUjUgLLwWrz20w/giphy.gif'; // Minion celebrando o similar
-const defeatImage = 'https://i.imgur.com/5c9Qh8X.gif'; // Chef cocinando (Derrota)
+const victoryImage = "/assets/images/pezFeoGanador.webp"; // Minion celebrando o similar
+const defeatImage = "/assets/images/almejaCocinada.jpeg"; // Chef cocinando (Derrota)
+const defeatImage2 = "/assets/images/pezCocinado.webp";
 
 
 

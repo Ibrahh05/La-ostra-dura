@@ -17,17 +17,17 @@ $criaturas_marinas = [
 ];
 
 // RESULTADOS (Las imágenes de los platos cocinados y el ganador)
-$img_ganador = $base_img_url . "pezFeoGanador.webp"; // Imagen de victoria/ganador
-$img_derrota_1 = $base_img_url . "almejaCocinada.jpeg"; // Imagen de almejas cocinadas
-$img_derrota_2 = $base_img_url . "pezCocinado.webp"; // Imagen de pez cocinado
-$img_chef = $base_img_url . "chef_macabro.gif"; // Usaremos un GIF para el icono de derrota
+$img_ganador = "/assets/images/pezFeoGanador.webp"; // Imagen de victoria/ganador
+$img_derrota_1 = "/assets/images/almejaCocinada.jpeg"; // Imagen de almejas cocinadas
+$img_derrota_2 = "/assets/images/pezCocinado.webp"; // Imagen de pez cocinado
+
 
 // OTROS JUEGOS (Se mantienen las rutas, asumiendo que existen)
-$gif_ruleta = $img_ganador; // fallback: imagen existente
-$gif_tragaperlas = $img_ganador; // fallback: imagen existente
-$img_blackjack = $img_ganador; // fallback: imagen existente
-$gif_cangrejo = $base_img_url . "pezTriste.jpg"; // usar imagen existente
-$img_poker = $img_ganador; // fallback: imagen existente
+$gif_ruleta = "/assets/icons/ruleta.png"; // fallback: imagen existente
+$gif_tragaperlas = "/assets/icons/tragaPerras.png"; // fallback: imagen existente
+$img_blackjack = "/assets/icons/blackJack.png"; // fallback: imagen existente
+$gif_cangrejo = "/assets/icons/cangrejo.png"; // usar imagen existente
+$img_poker = "/assets/icons/poker.png"; // fallback: imagen existente
 ?>
 
 <!DOCTYPE html>
