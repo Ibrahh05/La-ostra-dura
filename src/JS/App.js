@@ -804,3 +804,39 @@ function addCommentTyping(text, speed, isShout = false) {
     }
     type();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Seleccionamos los elementos
+    const openBtn = document.getElementById('openLiveBtn');
+    const closeBtn = document.getElementById('closeLiveBtn');
+    const overlay = document.getElementById('fakeLiveOverlay');
+    const video = document.getElementById('liveVideo');
+
+    // 2. Función para ABRIR el directo
+    openBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Evita cualquier comportamiento por defecto
+        
+        overlay.classList.add('active'); // Muestra el overlay
+        video.currentTime = 0; // Reinicia el video (opcional)
+        video.play(); // Empieza a reproducir
+        
+        // Opcional: Si quieres que tenga sonido al abrir, descomenta la linea de abajo
+        // video.muted = false; 
+    });
+
+    // 3. Función para CERRAR el directo
+    const closeLive = () => {
+        overlay.classList.remove('active'); // Oculta el overlay
+        video.pause(); // PAUSA el video
+    };
+
+    // Cerrar con el botón X
+    closeBtn.addEventListener('click', closeLive);
+
+    // Cerrar si hacen clic fuera del video (en el fondo oscuro)
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            closeLive();
+        }
+    });
+});

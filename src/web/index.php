@@ -11,7 +11,7 @@ $criaturas_marinas = [
     "almeja2.jpeg",
     "almeja3.webp",
     "pezFeoGanador.webp", // Ejemplo de criatura 4
-    "pezMamador.jpg", // Ejemplo de criatura 5
+    "Pez_Travis_Scott.jpg", // Ejemplo de criatura 5
     "pezTriste.jpg", // Ejemplo de criatura 6
     "pezDientudo.jpg" // Ejemplo de criatura 7
 ];
@@ -95,9 +95,22 @@ $img_poker = $img_ganador; // fallback: imagen existente
                 </div>
             </div>
             
-            <button class="live-btn" onclick="alert('El directo está cargando...')">
+            <button id="openLiveBtn" class="live-btn">
                 <i class="fas fa-satellite-dish live-icon"></i> EN VIVO
             </button>
+
+        <div id="fakeLiveOverlay" class="live-overlay">
+    
+            <button id="closeLiveBtn" class="close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="video-container">
+                <div class="live-badge">🔴 EN VIVO</div>
+        
+                <video id="liveVideo" src="../videos/directo_almejas.mp4" loop playsinline></video>
+            </div>
+        </div>
             
             <div class="balance" id="balance">10,000 <i class="fas fa-coins money-icon"></i></div>
         </div>
@@ -169,24 +182,27 @@ $img_poker = $img_ganador; // fallback: imagen existente
             <h3 class="arena-title"><i class="fas fa-dice slot-icon"></i> OTROS JUEGOS DEL OCÉANO</h3>
             
             <div class="games-carousel">
-                <!-- Se mantienen las imágenes de los minijuegos -->
-                <div class="game-card" onclick="alert('Cargando Ruleta...')">
+                <div class="game-card" onclick="window.location.href='ruleta.php'">
                     <img src="<?php echo $gif_ruleta; ?>" alt="Ruleta GIF" class="game-icon-img">
                     <div class="game-name">Ruleta Almejil</div>
                 </div>
-                <div class="game-card" onclick="alert('Cargando Tragaperlas...')">
+
+                <div class="game-card" onclick="window.location.href='tragaperlas.php'">
                     <img src="<?php echo $gif_tragaperlas; ?>" alt="Tragaperlas GIF" class="game-icon-img">
                     <div class="game-name">Tragaperlas 777</div>
                 </div>
-                <div class="game-card" onclick="alert('Cargando Póker...')">
+
+                <div class="game-card" onclick="window.location.href='poker.php'">
                     <img src="<?php echo $img_poker; ?>" alt="Poker Icono" class="game-icon-img">
                     <div class="game-name">Poker de Percebes</div>
                 </div>
-                <div class="game-card" onclick="alert('Cargando Blackjack...')">
+
+                <div class="game-card" onclick="window.location.href='blackjack.php'">
                     <img src="<?php echo $img_blackjack; ?>" alt="Blackjack Icono" class="game-icon-img">
                     <div class="game-name">Blackjack Oceánico</div>
                 </div>
-                <div class="game-card" onclick="alert('Cargando Carreras...')">
+
+                <div class="game-card" onclick="window.location.href='carreras.php'">
                     <img src="<?php echo $gif_cangrejo; ?>" alt="Cangrejo GIF" class="game-icon-img">
                     <div class="game-name">Carreras de Cangrejos</div>
                 </div>

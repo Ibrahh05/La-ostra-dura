@@ -1761,3 +1761,79 @@ header {
     .neon-text h1 { font-size: 1.5rem; }
     .fighter-avatar { width: 140px; height: 140px; }
 }
+
+/* 1. EL FONDO (OVERLAY) */
+.live-overlay {
+    position: fixed;       /* Se queda fijo en la pantalla aunque hagas scroll */
+    top: 0;
+    left: 0;
+    width: 100vw;          /* 100% del ancho de la ventana */
+    height: 100vh;         /* 100% del alto de la ventana (IMPORTANTE para centrar) */
+    background-color: rgba(0, 0, 0, 0.95); /* Casi negro total para enfocar atención */
+    z-index: 10000;        /* Muy alto para tapar menú, chat, etc. */
+    
+    /* LA MAGIA DEL CENTRADO */
+    display: none;         /* Oculto por defecto */
+    justify-content: center; /* Centrado Horizontal */
+    align-items: center;     /* Centrado Vertical */
+    flex-direction: column;
+}
+
+/* Cuando se activa con JS, le damos display flex para que funcionen los centrados */
+.live-overlay.active {
+    display: flex; 
+}
+
+/* 2. EL CONTENEDOR DEL VIDEO */
+.video-container {
+    position: relative;    /* Para poder posicionar la X de cerrar respecto a esto */
+    width: 90%;            /* Ocupa el 90% del ancho en móviles */
+    max-width: 1000px;     /* Pero no te pases de 1000px en PC */
+    aspect-ratio: 16/9;    /* Mantiene la forma rectangular de video */
+    background: black;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.6); /* Resplandor rojo */
+    display: flex;         /* Para asegurar que el video llene el hueco */
+}
+
+/* 3. EL VIDEO */
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Asegura que se vea todo el video sin recortes */
+}
+
+/* 4. BOTÓN DE CERRAR (X) MEJORADO */
+.close-btn {
+    position: absolute;
+    top: -40px;    /* Lo sacamos un poco por arriba del video */
+    right: -10px;   /* A la derecha */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 20;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Sombra para que se lea siempre */
+}
+
+.close-btn:hover {
+    color: #ff4444;
+    transform: scale(1.1);
+}
+
+/* 5. ETIQUETA "EN VIVO" */
+.live-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #cc0000;
+    color: white;
+    padding: 5px 12px;
+    font-family: sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    z-index: 15;
+    letter-spacing: 1px;
+    pointer-events: none; /* Para que no moleste al clic */
+}
