@@ -1,7 +1,7 @@
 <?php
 // Rutas de las imágenes de las criaturas (para la pelea)
 $base_img_url = "../assets/images/";
-// Icono/Logo (archivo en `src/assets/icons/logo.png`)
+// Icono/Logo (archivo en `../assets/icons/logo.png`)
 $logo_icon = "../assets/icons/logo.png";
 
 // LUCHADORES
@@ -18,17 +18,17 @@ $criaturas_marinas = [
 ];
 
 // RESULTADOS (Las imágenes de los platos cocinados y el ganador)
-$img_ganador = "/assets/images/pezFeoGanador.webp"; // Imagen de victoria/ganador
-$img_derrota_1 = "/assets/images/almejaCocinada.jpeg"; // Imagen de almejas cocinadas
-$img_derrota_2 = "/assets/images/pezCocinado.webp"; // Imagen de pez cocinado
+$img_ganador = "../assets/images/pezFeoGanador.webp"; // Imagen de victoria/ganador
+$img_derrota_1 = "../assets/images/almejaCocinada.jpeg"; // Imagen de almejas cocinadas
+$img_derrota_2 = "../assets/images/pezCocinado.webp"; // Imagen de pez cocinado
 
 
 // OTROS JUEGOS (Se mantienen las rutas, asumiendo que existen)
-$gif_ruleta = "/assets/icons/ruleta.png"; // fallback: imagen existente
-$gif_tragaperlas = "/assets/icons/tragaPerras.png"; // fallback: imagen existente
-$img_blackjack = "/assets/icons/blackJack.png"; // fallback: imagen existente
-$gif_cangrejo = "/assets/icons/cangrejo.png"; // usar imagen existente
-$img_poker = "/assets/icons/poker.png"; // fallback: imagen existente
+$gif_ruleta = "../assets/icons/ruleta.png"; // fallback: imagen existente
+$gif_tragaperlas = "../assets/icons/tragaPerras.png"; // fallback: imagen existente
+$img_blackjack = "../assets/icons/blackJack.png"; // fallback: imagen existente
+$gif_cangrejo = "../assets/icons/cangrejo.png"; // usar imagen existente
+$img_poker = "../assets/icons/poker.png"; // fallback: imagen existente
 ?>
 
 <!DOCTYPE html>
@@ -115,7 +115,7 @@ $img_poker = "/assets/icons/poker.png"; // fallback: imagen existente
                 <!-- LUCHADOR 1 -->
                 <div class="fighter" id="fighter-card-1">
                     <div class="fighter-card">
-                        <img src="../assets/images/pezMamador.jpg" alt="Criatura 1" class="fighter-avatar" id="fighter-img-1">
+                        <img src="/assets/images/pezMamador.jpg" alt="Criatura 1" class="fighter-avatar" id="fighter-img-1">
                         <div class="fighter-info">
                             <div class="fighter-name" id="name1"></div>
                             <div class="fighter-title">"El Conquistador del Fondo"</div>

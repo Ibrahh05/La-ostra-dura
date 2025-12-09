@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const names = JSON.parse(imgDataEl.dataset.criaturas || '[]');
             if (names && names.length) {
                 // Prefijar la ruta relativa correcta desde `src/web/` hacia `src/assets/images/`
-                fighterImages = names.map(n => '/assets/images/' + n);
+                fighterImages = names.map(n => '../assets/images/' + n);
             }
         }
     } catch (e) {
