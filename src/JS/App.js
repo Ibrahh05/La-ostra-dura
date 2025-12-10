@@ -341,6 +341,15 @@ class AudioManager {
         console.log(`🔊 Audio Muted: ${this.isMuted}`);
         return this.isMuted;
     }
+
+    toggleSoundtrack() {
+        if (this.bgmMenu) {
+            this.bgmMenu.muted = !this.bgmMenu.muted;
+            console.log(`🎵 Soundtrack Muted: ${this.bgmMenu.muted}`);
+            return this.bgmMenu.muted;
+        }
+        return false;
+    }
 }
 
 const audioManager = new AudioManager();
@@ -968,3 +977,52 @@ document.addEventListener('keydown', (e) => {
 
 // Exponer para debug
 window.game = game;
+
+
+/**
+ * ============================================================================
+ * CONTROL DEL DIRECTO (STREAMING)
+ * ============================================================================
+ */
+window.toggleLive = function() {
+    const overlay = document.getElementById('fakeLiveOverlay');
+    const video = document.getElementById('liveVideo');
+    
+    // Si ya está activo, lo cerramos
+    if (overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        video.pause(); // Pausamos para no consumir recursos
+    } else {
+        // Si está cerrado, lo abrimos
+        overlay.classList.add('active');
+        video.currentTime = 0; // Reiniciar video
+        video.play().catch(e => console.log("Autoplay bloqueado hasta interacción"));
+        
+        // Opcional: activar sonido si el usuario ya interactuó
+        // video.muted = false; 
+    }
+};
+
+window.toggleSoundtrack = function() {
+    // 1. Llamamos a la función interna
+    const isMuted = audioManager.toggleSoundtrack();
+    
+    // 2. Actualizamos el icono del botón visualmente
+    const btn = document.getElementById('musicBtn');
+    const icon = btn.querySelector('i');
+    
+    if (isMuted) {
+        btn.classList.add('muted');
+        icon.classList.remove('fa-music');
+        icon.classList.add('fa-volume-mute');
+    } else {
+        btn.classList.remove('muted');
+        icon.classList.remove('fa-volume-mute');
+        icon.classList.add('fa-music');
+        
+        // Si por alguna razón la música no estaba sonando (estaba pausada por el navegador), intentamos reproducirla
+        if (audioManager.bgmMenu.paused && !audioManager.isFighting) {
+            audioManager.playMenuMusic();
+        }
+    }
+};
