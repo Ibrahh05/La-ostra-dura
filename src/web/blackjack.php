@@ -13,6 +13,7 @@
         
         .balance-display { position: absolute; top: -50px; right: 0; font-size: 1.5rem; color: #ffd700; font-family: sans-serif; font-weight: bold; text-shadow: 0 0 5px #000; }
 
+        
         .controls-area { margin-top: 20px; }
         button { padding: 12px 24px; margin: 5px; cursor: pointer; border-radius: 8px; border: none; font-weight: bold; text-transform: uppercase; transition: transform 0.1s; }
         button:active { transform: scale(0.95); }

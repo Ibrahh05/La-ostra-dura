@@ -18,6 +18,7 @@
         h1 { color: #e67e22; text-shadow: 2px 2px 0 #000; margin-bottom: 30px; }
     </style>
 </head>
+
 <body>
     <div class="balance-display">Saldo: <span id="balance">0</span> 💰</div>
     <h1>🏴‍☠️ Póker del Fantasma</h1>

@@ -230,6 +230,7 @@ $img_poker = "../assets/icons/poker.png"; // fallback: imagen existente
         </div>
     </div>
 
+    
     <div id="fakeLiveOverlay" class="live-overlay">
         <div class="video-container">
             <button class="close-live-btn" onclick="toggleLive()">X</button>
