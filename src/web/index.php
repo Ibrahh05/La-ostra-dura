@@ -12,6 +12,7 @@ $criaturas_marinas = [
     "almeja3.webp",
     "bobEsponjaMalvado.jpg",
     "calamardoMalvado.webp",
+    "Pez_Travis_Scott.jpg",
     "pezMamador.jpg", // Ejemplo de criatura 5
     "pezTriste.jpg", // Ejemplo de criatura 6
     "pezDientudo.jpg" // Ejemplo de criatura 7
@@ -229,6 +230,7 @@ $img_poker = "../assets/icons/poker.png"; // fallback: imagen existente
             <button class="bet-btn" onclick="closeResult()"><i class="fas fa-times-circle"></i> ACEPTAR MI DESTINO</button>
         </div>
     </div>
+
 
     <div id="fakeLiveOverlay" class="live-overlay">
         <div class="video-container">

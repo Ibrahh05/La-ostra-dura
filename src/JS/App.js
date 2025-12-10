@@ -512,6 +512,7 @@ class GameEngine {
         this.ui.updateBalance(this.balance);
         this.ui.toggleControls(false);
         
+        
         audioManager.play('cash');
         this.ui.clearComments();
         
